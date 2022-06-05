@@ -13,7 +13,7 @@ import khac from '../../../img/Book-icon.png';
 
 const contentStyle = {
 	width: '933px',
-	height: '350px',
+	height: '400px',
 	color: '#fff',
 	lineHeight: '160px',
 	textAlign: 'center',
@@ -67,166 +67,118 @@ function Slider() {
 	return (
 		<div className={Styles.slider_center}>
 			{/*khong dong*/}
-			<div className={Styles.menu_slider}>
-				<ul className={Styles.hot_sale}>
-					<div className={Styles.menu_danhmuc}>
-						<li className={Styles.danhmuc}>
-							<MenuFoldOutlined className={Styles.icon__category} />
-							<h2>DANH MỤC</h2>
-						</li>
-					</div>
-					{/*<div className={Styles.menu_hotsale}>*/}
-					{/*	<div className={Styles.dososinh}>*/}
-					{/*		<li className={Styles.hot_sale_one}>*/}
-					{/*			<i>*/}
-					{/*				<img src={hot} />*/}
-					{/*			</i>*/}
-					{/*			<p>Top đầu tìm kiếm</p>*/}
-					{/*			<i>*/}
-					{/*				<img src={hot} />*/}
-					{/*			</i>*/}
-					{/*		</li>*/}
-					{/*	</div>*/}
-					{/*	<div className={Styles.suabot_ta_bim}>*/}
-					{/*		<li className={Styles.hot_sale_tow}>*/}
-					{/*			<div>*/}
-					{/*				<i>*/}
-					{/*					<img src={hot} />*/}
-					{/*				</i>*/}
-					{/*			</div>*/}
-					{/*			<div style={{ display: 'flex' }}>*/}
-					{/*				<p>Xếp hình</p>*/}
-					{/*				<p>- Xe</p>*/}
-					{/*				<p>- Máy súc [Có quà]</p>*/}
-					{/*			</div>*/}
-					{/*			<div>*/}
-					{/*				<i>*/}
-					{/*					<img src={hot} />*/}
-					{/*				</i>*/}
-					{/*			</div>*/}
-					{/*		</li>*/}
-					{/*	</div>*/}
-					{/*	<div className={Styles.khuyenmai_hangmoi}>*/}
-					{/*		<li className={Styles.hot_sale_fire}>*/}
-					{/*			<div>*/}
-					{/*				<i>*/}
-					{/*					<img src={hot} />*/}
-					{/*				</i>*/}
-					{/*			</div>*/}
-					{/*			<div style={{ display: 'flex' }}>*/}
-					{/*				<p>Khuyến mại</p>*/}
-					{/*				<p>- Hàng mới về</p>*/}
-					{/*			</div>*/}
-					{/*			<div>*/}
-					{/*				<i>*/}
-					{/*					<img src={hot} />*/}
-					{/*				</i>*/}
-					{/*			</div>*/}
-					{/*		</li>*/}
-					{/*	</div>*/}
-					{/*</div>*/}
-				</ul>
-			</div>
 			{/*khong dong*/}
 			<div className={Styles.slider}>
-				<div className={Styles.left_slider}>
-					<ul className={Styles.content_category_list}>
-						{categoryPaPaSort()
-							.slice(0, 6)
-							.map((item) => (
-								<li className={Styles.li_danh_muc} style={{ paddingTop: '6px' }}>
-									<Link to={`/xemtheomenu?_id=${item._id}`}>
-										<i
-											style={{
-												width: '33px',
-												height: '33px',
-												marginLeft: '10px',
-												marginRight: '10px',
-											}}
-										>
-											<img
-												src={BASE_URL_IMAGE + item.icon}
-												style={{ color: '#d219e7', fontSize: '20px' }}
-											/>
-										</i>
-										{item.name}
-										<div
-											className={classNames(
-												categoryPaPaSort(item._id).length > 0
-													? Styles.menu_hover_six
-													: Styles.menu_hover_six_none
-											)}
-										>
-											<ul>
-												<div
-													className={Styles.menu_hover_row}
-													style={{ borderRight: '1px solid #e0e0e0' }}
-												>
-													{componentChildren(item._id)}
-												</div>
-											</ul>
-										</div>
-									</Link>
+				<div style={{ display: 'flex', flexDirection: 'column' }}>
+					<div className={Styles.menu_slider}>
+						<ul className={Styles.hot_sale}>
+							<div className={Styles.menu_danhmuc}>
+								<li className={Styles.danhmuc}>
+									<MenuFoldOutlined className={Styles.icon__category} />
+									<h2>DANH MỤC</h2>
 								</li>
-							))}
-						<li style={{ paddingTop: '6px', fontFamily: 'Arial, Tahoma' }}>
-							<i
-								style={{
-									width: '33px',
-									height: '33px',
-									marginLeft: '10px',
-									marginRight: '10px',
-								}}
-							>
-								<img src={khac} style={{ color: '#d219e7', fontSize: '20px' }} />
-							</i>
-							Thể loại khác
-							<div className={Styles.menu_hover}>
-								<ul>
-									<div style={{ display: 'flex' }}>
-										<div
-											className={Styles.menu_hover_row}
-											style={{ borderRight: '1px solid #e0e0e0' }}
-										>
-											{categoryPaPaSort()
-												.slice(6, 13)
-												.map((item) => (
-													<li className={Styles.menu_hover_row_item}>
-														<Link
-															to={`/xemtheomenu?_id=${item._id}`}
-															className={Styles.menu_hover_link}
-														>
-															{item.name}
-														</Link>
-													</li>
-												))}
-										</div>
-										<div className={Styles.menu_hover_row}>
-											{categoryPaPaSort()
-												.slice(13, 19)
-												.map((item) => (
-													<li className={Styles.menu_hover_row_item}>
-														<Link
-															to={`/xemtheomenu?_id=${item._id}`}
-															className={Styles.menu_hover_link}
-														>
-															{item.name}
-														</Link>
-													</li>
-												))}
-											{categoryPaPaSort().length > 19 && (
-												<li className={Styles.menu_hover_row_item}>
-													<Link to={`/xemtheomenu`} className={Styles.menu_hover_link}>
-														<span style={{ color: 'red' }}>Xem tất cả >></span>
-													</Link>
-												</li>
-											)}
-										</div>
-									</div>
-								</ul>
 							</div>
-						</li>
-					</ul>
+						</ul>
+					</div>
+					<div className={Styles.left_slider}>
+						<ul className={Styles.content_category_list}>
+							{categoryPaPaSort()
+								.slice(0, 6)
+								.map((item) => (
+									<li className={Styles.li_danh_muc} style={{ paddingTop: '6px' }}>
+										<Link to={`/xemtheomenu?_id=${item._id}`}>
+											<i
+												style={{
+													width: '33px',
+													height: '33px',
+													marginLeft: '10px',
+													marginRight: '10px',
+												}}
+											>
+												<img
+													src={BASE_URL_IMAGE + item.icon}
+													style={{ color: '#d219e7', fontSize: '20px' }}
+												/>
+											</i>
+											{item.name}
+											<div
+												className={classNames(
+													categoryPaPaSort(item._id).length > 0
+														? Styles.menu_hover_six
+														: Styles.menu_hover_six_none
+												)}
+											>
+												<ul>
+													<div
+														className={Styles.menu_hover_row}
+														style={{ borderRight: '1px solid #e0e0e0' }}
+													>
+														{componentChildren(item._id)}
+													</div>
+												</ul>
+											</div>
+										</Link>
+									</li>
+								))}
+							<li style={{ paddingTop: '6px', fontFamily: 'Arial, Tahoma' }}>
+								<i
+									style={{
+										width: '33px',
+										height: '33px',
+										marginLeft: '10px',
+										marginRight: '10px',
+									}}
+								>
+									<img src={khac} style={{ color: '#d219e7', fontSize: '20px' }} />
+								</i>
+								Thể loại khác
+								<div className={Styles.menu_hover}>
+									<ul>
+										<div style={{ display: 'flex' }}>
+											<div
+												className={Styles.menu_hover_row}
+												style={{ borderRight: '1px solid #e0e0e0' }}
+											>
+												{categoryPaPaSort()
+													.slice(6, 13)
+													.map((item) => (
+														<li className={Styles.menu_hover_row_item}>
+															<Link
+																to={`/xemtheomenu?_id=${item._id}`}
+																className={Styles.menu_hover_link}
+															>
+																{item.name}
+															</Link>
+														</li>
+													))}
+											</div>
+											<div className={Styles.menu_hover_row}>
+												{categoryPaPaSort()
+													.slice(13, 19)
+													.map((item) => (
+														<li className={Styles.menu_hover_row_item}>
+															<Link
+																to={`/xemtheomenu?_id=${item._id}`}
+																className={Styles.menu_hover_link}
+															>
+																{item.name}
+															</Link>
+														</li>
+													))}
+												{categoryPaPaSort().length > 19 && (
+													<li className={Styles.menu_hover_row_item}>
+														<Link to={`/xemtheomenu`} className={Styles.menu_hover_link}>
+															<span style={{ color: 'red' }}>Xem tất cả >></span>
+														</Link>
+													</li>
+												)}
+											</div>
+										</div>
+									</ul>
+								</div>
+							</li>
+						</ul>
+					</div>
 				</div>
 				<div className={Styles.center_slider}>
 					<Carousel autoplay className={Styles.picture_slider}>
@@ -237,7 +189,7 @@ function Slider() {
 								<div>
 									<h3 style={contentStyle}>
 										<img
-											style={{ width: '933px', height: '350px' }}
+											style={{ width: '933px', height: '400px' }}
 											src={BASE_URL_IMAGE + item.image_link}
 											alt={item.name}
 										/>

@@ -18,6 +18,7 @@ import { BASE_URL_IMAGE } from '../../util/TypeApi';
 import Style from './style.module.scss';
 import TypeCookiesUtil from '../../util/TypeCookies';
 import { ContextApp } from '../../context/contextApp';
+import styled from 'styled-components';
 const { Header, Sider, Content } = Layout;
 
 const objectKey = {
@@ -33,6 +34,35 @@ const objectKey = {
 };
 const { Search } = Input;
 const checkKey_admin = 'checkKey_admin';
+const WrapSearch = styled(Search)`
+	.ant-input {
+		border-radius: 8px;
+	}
+	.ant-input-group-addon {
+		background-color: blue !important;
+		border-top-right-radius: 7px !important;
+		border-bottom-right-radius: 7px !important;
+		.ant-btn-primary {
+			background-color: blue !important;
+			border-color: blue;
+			border-top-right-radius: 7px !important;
+			border-bottom-right-radius: 7px !important;
+		}
+		& > button {
+			border-radius: 8px;
+		}
+	}
+`;
+
+const WrapSider = styled(Sider)`
+	display: flex;
+	flex-direction: column;
+	background-color: white;
+	.ant-layout-sider-trigger {
+		background-color: white !important;
+		color: black;
+	}
+`;
 function LayoutAdmin() {
 	// hooks
 	const accountAdmin = useSelector((state) => state['accountAdmin']);
@@ -86,7 +116,13 @@ function LayoutAdmin() {
 	const ComponentHeader = (
 		<Header
 			className={Style.site_layout_background}
-			style={{ position: 'fixed', zIndex: 1, minWidth: '1064px' }}
+			style={{
+				position: 'fixed',
+				zIndex: 1,
+				width: '100%',
+				backgroundColor: '#6d9eeb',
+				borderBottom: '1px solid #0c53c3',
+			}}
 		>
 			<div
 				style={{
@@ -102,11 +138,13 @@ function LayoutAdmin() {
 						})}
 					</div>
 					<div>
-						<h1 style={{ color: '#0bb122' }}>FAHASA</h1>
+						<h1 style={{ color: '#d9363e', fontSize: '35px', fontWeight: 'bold' }}>
+							FAHASA
+						</h1>
 					</div>
 				</div>
 
-				<Search
+				<WrapSearch
 					placeholder={'Tìm kiếm nhanh'}
 					onSearch={onSearch}
 					enterButton
@@ -129,8 +167,7 @@ function LayoutAdmin() {
 		<Content
 			className={Style.site_layout_background}
 			style={{
-				margin: '80px 24px 24px 24px',
-				padding: 24,
+				marginLeft: '24px',
 				minHeight: 280,
 			}}
 		>
@@ -138,33 +175,33 @@ function LayoutAdmin() {
 		</Content>
 	);
 	const ComponentSlider = (
-		<Sider
+		<WrapSider
 			style={{
 				overflow: 'auto',
 				height: '100vh',
-				position: 'fixed',
 				left: 0,
+				top: '64px',
+				position: 'sticky',
 			}}
 			collapsible
 			collapsed={collapsed}
 			onCollapse={() => toggle()}
 		>
-			<div className={Style.logo} />
 			<div className={Style.menu_admin}>
 				<MenuAdmin objectKey={objectKey} setCheckKey={setCheckKey} />
 			</div>
-		</Sider>
+		</WrapSider>
 	);
 	return (
-		<Layout style={{ minHeight: '100vh' }}>
+		<Layout style={{ minHeight: '100vh', display: 'flex' }}>
 			{
-				/* Slider */
-				ComponentSlider
+				/* Header */
+				ComponentHeader
 			}
-			<Layout className={Style.site_layout} style={{ marginLeft: sizeLayout }}>
+			<Layout className={Style.site_layout} style={{ marginTop: '110px' }}>
 				{
-					/* Header */
-					ComponentHeader
+					/* Slider */
+					ComponentSlider
 				}
 				{
 					/* Content */

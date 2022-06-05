@@ -15,12 +15,32 @@ import baseAPI from '../../../axios/baseAPI';
 import useCartLogicData from '../../../hooks/useCartLogicData';
 import useProductLogicData from '../../../hooks/useProductLogicData';
 import { ContextApp } from '../../../context/contextApp';
+import styled from 'styled-components';
 //style
-const stylIcon = { width: '90px', display: 'flex', justifyContent: 'space-evenly' };
+const stylIcon = { position: 'relative' };
 
 // const
 const { Search } = Input;
-
+const WrapSearch = styled(Search)`
+	.ant-input {
+		border-radius: 8px;
+	}
+	.ant-input-group-addon {
+		.ant-btn-primary {
+			background-color: red;
+			border-color: red;
+			border-top-right-radius: 7px !important;
+			border-bottom-right-radius: 7px !important;
+		}
+		& > button {
+			border-radius: 8px;
+			background-color: red;
+		}
+	}
+`;
+const WrapBadge = styled(Badge)`
+	position: absolute;
+`;
 function MenuHome() {
 	// hooks
 	const myUser = useSelector((state) => state['myUser']);
@@ -81,85 +101,92 @@ function MenuHome() {
 	React.useEffect(() => {
 		getListProduct();
 	}, []);
-	const menu = (
-		<Menu
-			onClick={handleClickMenuCart}
-			style={{ width: '500px', backgroundColor: '#efe6ef' }}
-		>
-			<span
-				style={{
-					color: '#1890ff',
-					marginLeft: '20px',
-					fontSize: '16px',
-				}}
-			>
-				SẢN PHẨM ĐÃ THÊM
-			</span>
-			<hr
-				style={{
-					height: '1px',
-					borderWidth: '0',
-				}}
-			/>
-			{arrCarts
-				.reverse()
-				.slice(0, 4)
-				.map((item) => (
-					<Menu.Item key={item._id} style={{ marginTop: '20px' }}>
-						<div className={Styles.hover_cart}>
-							<div className={Styles.img_hover_cart}>
-								<img
-									alt={item.image}
-									src={
-										product &&
-										product[item.product_id] &&
-										BASE_URL_IMAGE + product[item.product_id].image
-									}
-									style={{ width: 50, height: 50 }}
-								/>
-							</div>
-							<div className={Styles.span_hover_cart}>
-								{product && product[item.product_id] && product[item.product_id].name}
-							</div>
-							<div className={Styles.gia_hover_cart}>
-								{`${
-									product &&
-									product[item.product_id] &&
-									product[item.product_id].price * 1000
-								}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',') + ' VNĐ'}
-							</div>
-						</div>
-					</Menu.Item>
-				))}
-			<hr
-				style={{
-					height: '2px',
-					borderWidth: '0',
-					backgroundColor: '#1890ff',
-				}}
-			/>
-			<Menu.Item key="XEM_THEM">
-				<div
-					style={{ display: 'flex', justifyContent: 'space-between', marginTop: '10px', color: '#1890ff' }}
-				>
-					<div>Trong giỏ hàng hiện đang có : {`${arrCarts.length} sản phẩm`}</div>
-					<div>
-						<Button
-							style={{
-								backgroundColor: '#1890ff',
-								height: '40px',
-								color: '#1890ff',
-								boxShadow:
-									'0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
-							}}
-						>
-							Xem giỏ hàng
-						</Button>
-					</div>
-				</div>
-			</Menu.Item>
-		</Menu>
-	);
+	const menu = <React.Fragment></React.Fragment>;
+	// 	!myUser.email ? (
+	// 	<React.Fragment></React.Fragment>
+	// ) : (
+	// 	<Menu
+	// 		onClick={handleClickMenuCart}
+	// 		style={{ width: '500px', backgroundColor: '#efe6ef' }}
+	// 	>
+	// 		<span
+	// 			style={{
+	// 				color: '#FF0000',
+	// 				marginLeft: '20px',
+	// 				fontSize: '16px',
+	// 				paddingTop: '10px',
+	// 			}}
+	// 		>
+	// 			SẢN PHẨM ĐÃ THÊM
+	// 		</span>
+	// 		<hr
+	// 			style={{
+	// 				height: '1px',
+	// 				borderWidth: '0',
+	// 			}}
+	// 		/>
+	// 		{arrCarts
+	// 			.reverse()
+	// 			.slice(0, 4)
+	// 			.map((item) => (
+	// 				<Menu.Item key={item._id} style={{ marginTop: '20px' }}>
+	// 					<div className={Styles.hover_cart}>
+	// 						<div className={Styles.img_hover_cart}>
+	// 							<img
+	// 								alt={item.image}
+	// 								src={
+	// 									product &&
+	// 									product[item.product_id] &&
+	// 									BASE_URL_IMAGE + product[item.product_id].image
+	// 								}
+	// 								style={{ width: 50, height: 50 }}
+	// 							/>
+	// 						</div>
+	// 						<div className={Styles.span_hover_cart}>
+	// 							{product && product[item.product_id] && product[item.product_id].name}
+	// 						</div>
+	// 						<div className={Styles.gia_hover_cart}>
+	// 							{`${
+	// 								product &&
+	// 								product[item.product_id] &&
+	// 								product[item.product_id].price * 1000
+	// 							}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',') + ' VNĐ'}
+	// 						</div>
+	// 					</div>
+	// 				</Menu.Item>
+	// 			))}
+	// 		<hr
+	// 			style={{
+	// 				height: '2px',
+	// 				borderWidth: '0',
+	// 			}}
+	// 		/>
+	// 		<Menu.Item key="XEM_THEM">
+	// 			<div
+	// 				style={{
+	// 					display: 'flex',
+	// 					justifyContent: 'space-between',
+	// 					marginTop: '10px',
+	// 				}}
+	// 			>
+	// 				<div>Trong giỏ hàng hiện đang có : {`${arrCarts.length} sản phẩm`}</div>
+	// 				<div>
+	// 					<Button
+	// 						style={{
+	// 							backgroundColor: '#1890ff',
+	// 							height: '40px',
+	// 							color: '#1890ff',
+	// 							boxShadow:
+	// 								'0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
+	// 						}}
+	// 					>
+	// 						Xem giỏ hàng
+	// 					</Button>
+	// 				</div>
+	// 			</div>
+	// 		</Menu.Item>
+	// 	</Menu>
+	// );
 	const menuUser = (
 		<Menu onClick={handleClick}>
 			<Menu.Item key="USER">
@@ -181,7 +208,7 @@ function MenuHome() {
 				</Link>
 			</div>
 			<div className={Styles.search}>
-				<Search
+				<WrapSearch
 					placeholder="Bạn muốn tìm kiếm loại sách nào ?"
 					onSearch={onSearch}
 					enterButton
@@ -191,14 +218,13 @@ function MenuHome() {
 				<div style={stylIcon}>
 					<Dropdown overlay={menu}>
 						<Link to={'/cart'}>
-							<Badge size="small" count={arrCarts.length}>
-								<Button
-									icon={<ShoppingCartOutlined style={{ 'font-size': '16px' }} />}
-									type="text"
-								>
-									Giỏ hàng
-								</Button>
-							</Badge>
+							{myUser.email && <WrapBadge size="small" count={arrCarts.length} />}
+							<Button
+								icon={<ShoppingCartOutlined style={{ 'font-size': '16px' }} />}
+								type="text"
+							>
+								Giỏ hàng
+							</Button>
 						</Link>
 					</Dropdown>
 				</div>

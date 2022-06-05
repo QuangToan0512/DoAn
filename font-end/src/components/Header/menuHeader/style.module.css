@@ -9,6 +9,8 @@
     width: 500px;
     height: 41px;
     margin-top: 25px;
+}
+.search > input{
     border-radius: 5px;
 }
 .logo {
@@ -27,7 +29,7 @@
     object-fit: contain;
 }
 .singIn_singOut{
-    width: 280px;
+    /*width: 280px;*/
     display: flex;
     justify-content: space-between;
     margin-top: 25px;

@@ -251,23 +251,8 @@ function BuyProduct() {
 						{/*	<img src={logo} />*/}
 						{/*</Link>*/}
 					</div>
-					<div className={Styles.oder_header_icon}>
-						<div className={Styles.box_icon_item_1}>
-							<span className={Styles.box_icon_ic_icon_ship} />
-							<span className={Styles.giao_hang}>Giao hàng toàn quốc</span>
-						</div>
-						<div className={Styles.box_icon_item_2}>
-							<span className={Styles.box_icon_bg_icon_ship} />
-							<span className={Styles.giao_hang}>Đổi hàng 15 ngày miễn phí</span>
-						</div>
-						<div className={Styles.box_icon_item_3}>
-							<span className={Styles.box_icon_chinhhang} />
-							<span className={Styles.giao_hang}>Đảm bảo hàng chính hãng</span>
-						</div>
-					</div>
 				</div>
 				<div className={Styles.login_oder}>
-					<span>Hãy </span>
 					<Link to={'/account'}>
 						<b>Cập nhật thông tin tài khoản của bạn</b>
 					</Link>

@@ -1,0 +1,13 @@
+ant-menu {
+    background-color: red !important;
+}
+.ant-menu-item {
+    background-color: white;
+}
+.ant-menu-item-selected {
+    background-color: #d9363e;
+}
+
+.ant-menu-light {
+
+}

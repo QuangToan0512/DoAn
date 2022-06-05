@@ -26,8 +26,7 @@ Footer.propTypes = {};
 
 function Footer(props) {
 	return (
-		<div style={{ width: '100%', height: '100%', backgroundColor: '#d9f3f4' }}>
-			<div className="form_footer">
+		<div className="form_footer">
 				<div className="list_footer">
 					<div className="list_footer_item">
 						<h3>
@@ -61,42 +60,8 @@ function Footer(props) {
 							<a>cskh@fahasa.com.vn</a>(8h - 21h00)
 						</p>
 					</div>
-						{/*<div>*/}
-						{/*	<h3>*/}
-						{/*		<b>ĐĂNG KÝ NHẬN TIN KHUYẾN MẠI</b>*/}
-						{/*	</h3>*/}
-						{/*	<Search*/}
-						{/*		placeholder="input search text"*/}
-						{/*		allowClear*/}
-						{/*		enterButton="Đăng ký"*/}
-						{/*		size="large"*/}
-						{/*		onSearch={onSearch}*/}
-						{/*	/>*/}
-						{/*	/!*<div>*!/*/}
-						{/*	/!*    <FacebookOutlined />*!/*/}
-						{/*	/!*</div>*!/*/}
-						{/*</div>*/}
-				</div>
-				<div>
-					<hr />
-				</div>
-				<div className="footer_end">
-					<div className="footer_end_item">
-						<p>
-							© 2021 Fahasa - 424 Nguyễn Trãi - Thanh Xuân - Hà Nội424 Nguyễn Trãi - Thanh Xuân - Hà Nội
-						</p>
-					</div>
-					{/*<div className="footer_end_item_tow">*/}
-					{/*	<div className="footer_end_item_tow_item">*/}
-					{/*		<img src={footer2} style={{ width: '228px', height: '30px' }} />*/}
-					{/*	</div>*/}
-					{/*	<div className="footer_end_item_tow_item">*/}
-					{/*		<img src={footer1} style={{ width: '129px', height: '48px' }} />*/}
-					{/*	</div>*/}
-					{/*</div>*/}
 				</div>
 			</div>
-		</div>
 	);
 }
 
